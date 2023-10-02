@@ -1,0 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Gabarito&display=swap');
+
+* {
+    font-family: "Gabarito", cursive;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+}

@@ -1,0 +1,13 @@
+<div class="my-8">
+    <div class="flex justify-start items-center m-4">
+        <h2 class="text-neutral-100 text-xl uppercase">Currently Top Airing</h2>
+    </div>
+    <div class="flex flex-wrap justify-center items-center gap-2">
+        <% data.forEach(i => { %>
+            <a href="/<%= i.id %>" class="flex flex-col gap-1">
+                <img src="<%= i.image %>" alt="<%= i.title %>" title="<%= i.title %>" class="w-40 h-56 rounded-tr-3xl object-cover">
+                <p class="text-neutral-100 w-40 text-center truncate"><%= i.title %></p>
+            </a>
+        <% }); %>
+    </div>
+</div>

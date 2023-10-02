@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Animux</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <meta name="description" content="Anime streaming platform online for free">
+    <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://vjs.zencdn.net/8.5.2/video-js.css">
+    <link rel="stylesheet" href="https://unpkg.com/@videojs/themes@1.0.1/dist/forest/index.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://vjs.zencdn.net/8.5.2/video.min.js"></script>
+</head>
+
+<body
+    class="bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-gray-700 via-gray-900 to-black bg-center bg-cover bg-no-repeat bg-fixed scroll-smooth">
+    <section class="relative">
+        <%- include("../components/header.ejs") %>
+            <%- body %>
+                <%- include("../components/footer.ejs") %>
+    </section>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<div class="my-8">
+    <div class="flex flex-col justify-between items-center m-4">
+        <h2 class="text-neutral-100 text-xl uppercase">Currently Watching <%= data.title %>
+        </h2>
+        <div class="my-4">
+            <label for="episodes"
+                class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">Episodes</label>
+            <select name="episodes" id="episodes-selector"
+                class="text-neutral-100 bg-purple-600 focus:text-neutral-950 focus:bg-neutral-100">
+                <option selected>Select</option>
+                <% data.episodes.forEach(episode=> { %>
+                    <option value="<%= data.id %>/<%= episode.id %>">
+                        <%= episode.number %>
+                    </option>
+                    <% }); %>
+            </select>
+        </div>
+    </div>
+    <div class="flex justify-center">
+        <video id="player" class="video-js vjs-theme-forest" width=960 height=540 controls>
+            <source src="<%= episode[2].url %>" type="application/x-mpegURL" label="480P">
+        </video>
+    </div>
+</div>
+
+<div class="my-8">
+    <div class="flex justify-start items-center m-4">
+        <h2 class="text-neutral-100 text-xl uppercase">
+            <%= data.title %>
+        </h2>
+    </div>
+    <div class="flex flex-wrap md:flex-nowrap justify-center items-center space-x-4 m-4">
+        <img src="<%= data.image %>" alt="<%= data.title %>"
+            class="w-52 h-72 object-cover rounded-lg mb-4 md:mb-0 md:mr-4">
+        <div>
+            <div class="flex flex-wrap justify-center md:justify-start gap-2">
+                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                    <%= data.releaseDate %>
+                </span>
+                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                    <%= data.status %>
+                </span>
+                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                    <%= data.subOrDub %>
+                </span>
+            </div>
+            <div class="flex flex-wrap justify-center md:justify-start gap-2 my-2">
+                <% data.genres.forEach(i=> { %>
+                    <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                        <%= i %>
+                    </span>
+                    <% }); %>
+            </div>
+            <p class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">
+                <%= data.description %>
+            </p>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById("episodes-selector").addEventListener("change", function () {
+        var episode = this.value;
+        if (episode) {
+            window.location.href = "/" + episode;
+        }
+    });
+    const player = videojs("#player");
+    player.pause();
+</script>
