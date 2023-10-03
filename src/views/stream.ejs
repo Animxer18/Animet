@@ -1,8 +1,8 @@
 <div class="my-8">
     <div class="flex flex-col justify-between items-center m-4">
-        <h2 class="text-neutral-100 text-xl uppercase">Currently Watching <%= data.title %>
+        <h2 class="text-neutral-100 text-xl uppercase" data-aos="fade-right">Currently Watching <%= data.title %>
         </h2>
-        <div class="my-4">
+        <div class="my-4" data-aos="fade-left">
             <label for="episodes"
                 class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">Episodes</label>
             <select name="episodes" id="episodes-selector"
@@ -16,14 +16,14 @@
             </select>
         </div>
     </div>
-    <div class="flex justify-center">
+    <div class="flex justify-center" data-aos="fade-in">
         <video id="player" class="video-js vjs-theme-forest" width=960 height=540 controls>
             <source src="<%= episode[2].url %>" type="application/x-mpegURL" label="480P">
         </video>
     </div>
 </div>
 
-<div class="my-8">
+<div class="my-8" data-aos="fade-in">
     <div class="flex justify-start items-center m-4">
         <h2 class="text-neutral-100 text-xl uppercase">
             <%= data.title %>
