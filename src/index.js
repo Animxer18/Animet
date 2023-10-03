@@ -13,4 +13,4 @@ app.set("views", path.join(__dirname, "views"));
 app.set("layout", path.join(__dirname, "layouts", "layout"));
 app.set("view engine", "ejs");
 // App Listening
-app.listen(1001, () => console.log("Animux is Running!"));
+app.listen(1001, () => console.log("Animet is Running!"));

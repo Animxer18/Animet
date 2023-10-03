@@ -16,6 +16,10 @@ router.get("/airing", (req, res) => {
     });
 });
 
+router.get("/about", (req, res) => {
+    res.render("about", { title: "About" });
+});
+
 router.get("/:id", (req, res) => {
     const id = req.params.id;
     const gogoanime = new ANIME.Gogoanime();
@@ -28,7 +32,6 @@ router.get("/:id/:episode", async (req, res) => {
     const id = req.params.id;
     const episode = req.params.episode;
     const gogoanime = new ANIME.Gogoanime();
-
     try {
         const [info, episodes] = await Promise.all([
             gogoanime.fetchAnimeInfo(id),
