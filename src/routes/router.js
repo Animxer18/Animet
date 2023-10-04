@@ -1,47 +1,49 @@
 const express = require("express");
 const router = express.Router();
-const { ANIME } = require("@consumet/extensions");
+const axios = require("axios");
+const url = process.env.API_URL;
 
-router.get("/", (req, res) => {
-    const gogoanime = new ANIME.Gogoanime();
-    gogoanime.fetchRecentEpisodes().then(data => {
-        res.render("index", { data: data.results, title: "Watch anime online for free" });
-    });
+router.get("/", async (req, res) => {
+    const response = await axios.get(url + "recent-release");
+    const data = response.data;
+    res.render("index", { data, title: "Watch anime online for free" })
 });
 
-router.get("/airing", (req, res) => {
-    const gogoanime = new ANIME.Gogoanime();
-    gogoanime.fetchTopAiring().then(data => {
-        res.render("airing", { data: data.results, title: "Currently Airing" });
-    });
+router.get("/airing", async (req, res) => {
+    const page1 = axios.get(url + "top-airing?page=1");
+    const page2 = axios.get(url + "top-airing?page=2");
+    const page3 = axios.get(url + "top-airing?page=3");
+    const [response1, response2, response3] = await Promise.all([page1, page2, page3]);
+    const data1 = response1.data;
+    const data2 = response2.data;
+    const data3 = response3.data;
+    const combinedData = [...data1, ...data2, ...data3];
+
+    res.render("airing", { data: combinedData, title: "Currently Airing" });
 });
 
-router.get("/about", (req, res) => {
-    res.render("about", { title: "About" });
+router.get("/popular", async (req, res) => {
+    const response = await axios.get(url + "popular");
+    const data = response.data;
+    res.render("popular", { data, title: "Currently Popular" })
 });
 
-router.get("/:id", (req, res) => {
+router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    const gogoanime = new ANIME.Gogoanime();
-    gogoanime.fetchAnimeInfo(id).then(data => {
-        res.render("info", { data, title: data.title });
-    });
+    const response = await axios.get(url + "anime-details/" + id);
+    const data = response.data;
+    res.render("info", { data, id, title: data.animeTitle });
 });
 
 router.get("/:id/:episode", async (req, res) => {
     const id = req.params.id;
     const episode = req.params.episode;
-    const gogoanime = new ANIME.Gogoanime();
-    try {
-        const [info, episodes] = await Promise.all([
-            gogoanime.fetchAnimeInfo(id),
-            gogoanime.fetchEpisodeSources(episode)
-        ]);
-        res.render("stream", { data: info, episode: episodes.sources, title: info.title });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: "An error occurred!" });
-    }
+    const response_1 = await axios.get(url + "vidcdn/watch/" + episode);
+    const stream = response_1.data;
+    const response_2 = await axios.get(url + "anime-details/" + id);
+    const data = response_2.data;
+    res.render("stream", { stream, data, id, title: data.animeTitle });
 });
+
 
 module.exports = router

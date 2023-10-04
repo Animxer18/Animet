@@ -1,6 +1,6 @@
 {
   "name": "animet",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Anime streaming platform online for free.",
   "main": "src/index.js",
   "type": "commonjs",
@@ -9,7 +9,8 @@
     "start": "node ."
   },
   "dependencies": {
-    "@consumet/extensions": "^1.5.2",
+    "axios": "^1.5.1",
+    "dotenv": "^16.3.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
     "express-ejs-layouts": "^2.5.1",

@@ -1,15 +1,12 @@
 <div class="my-8" data-aos="fade-up">
     <div class="flex justify-start items-center m-4">
-        <h2 class="text-neutral-100 text-xl uppercase">Currently Airing</h2>
+        <h2 class="text-neutral-100 text-xl uppercase">Currently Popular</h2>
     </div>
     <div class="flex flex-wrap justify-center items-center gap-2">
         <% data.forEach(i=> { %>
             <a href="/<%= i.animeId %>" class="flex flex-col gap-1">
                 <img src="<%= i.animeImg %>" alt="<%= i.animeTitle %>" title="<%= i.animeTitle %>"
-                    class="w-40 h-56 rounded-tr-3xl object-cover">
-                <span class="absolute text-neutral-100 bg-purple-600 px-2 rounded-r-3xl">
-                    <%= i.latestEp %>
-                </span>
+                    class="w-40 h-56 rounded-lg object-cover">
                 <p class="text-neutral-100 w-40 text-center truncate">
                     <%= i.animeTitle %>
                 </p>

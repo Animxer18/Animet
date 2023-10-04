@@ -1,45 +1,48 @@
 <div class="my-8" data-aos="fade-in">
     <div class="flex justify-start items-center m-4">
         <h2 class="text-neutral-100 text-xl uppercase">
-            <%= data.title %>
+            <%= data.animeTitle %>
         </h2>
     </div>
     <div class="flex flex-wrap md:flex-nowrap justify-center items-center space-x-4 m-4">
-        <img src="<%= data.image %>" alt="<%= data.title %>"
+        <img src="<%= data.animeImg %>" alt="<%= data.animeTitle %>"
             class="w-52 h-72 object-cover rounded-lg mb-4 md:mb-0 md:mr-4">
         <div>
             <div class="flex flex-wrap justify-center md:justify-start gap-2">
-                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
-                    <%= data.releaseDate %>
+                <span class="text-neutral-100 bg-purple-600 rounded-full px-2">
+                    <%= data.releasedDate %>
                 </span>
-                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                <span class="text-neutral-100 bg-purple-600 rounded-full px-2">
                     <%= data.status %>
-                </span>
-                <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
-                    <%= data.subOrDub %>
                 </span>
             </div>
             <div class="flex flex-wrap justify-center md:justify-start gap-2 my-2">
                 <% data.genres.forEach(i=> { %>
-                    <span class="text-neutral-100 bg-purple-600 rounded-full py-1 px-2">
+                    <span class="text-neutral-100 bg-purple-600 rounded-full px-2">
                         <%= i %>
                     </span>
                     <% }); %>
             </div>
-            <p class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">
-                <%= data.description %>
+            <p class="text-neutral-100 text-sm uppercase text-center md:w-[1000px] md:text-left md:text-base">
+                <%= data.synopsis %>
             </p>
             <div class="flex justify-center md:justify-start items-center gap-2 my-2">
                 <label for="episodes"
-                    class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">Episodes</label>
-                <select name="episodes" id="episodes-selector" class="text-neutral-100 bg-purple-600 focus:text-neutral-950 focus:bg-neutral-100">
-                    <option selected>Select</option>
-                    <% data.episodes.forEach(episode=> { %>
-                        <option value="<%= data.id %>/<%= episode.id %>">
-                            <%= episode.number %>
-                        </option>
-                        <% }); %>
-                </select>
+                    class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">Episodes »</label>
+                <% if (data.episodesList && data.episodesList.length> 0) { %>
+                    <select name="episodes" id="episodes-selector"
+                        class="text-neutral-100 bg-purple-600 rounded-lg outline-none px-2 focus:text-neutral-950 focus:bg-neutral-100">
+                        <option selected>Select</option>
+                        <% data.episodesList.forEach(episode=> { %>
+                            <option value="<%= id %>/<%= episode.episodeId %>">
+                                <%= episode.episodeNum %>
+                            </option>
+                            <% }); %>
+                    </select>
+                    <% } else { %>
+                        <span class="text-neutral-100 text-sm uppercase text-center md:text-left md:text-base">Not Yet
+                            Released</span>
+                        <% } %>
             </div>
         </div>
     </div>
