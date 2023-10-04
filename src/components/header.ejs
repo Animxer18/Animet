@@ -1,8 +1,26 @@
-<div class="flex justify-around items-center m-4">
-    <a href="/"><img src="../assets/favicon.ico" alt="Animet" class="w-10" data-aos="fade-right"></a>
-    <ul class="flex gap-4" data-aos="fade-left">
+<div class="flex justify-around items-center m-4" data-aos="fade-in">
+    <a href="/"><img src="../assets/favicon.ico" alt="Animet" class="w-10"></a>
+    <ul class="hidden md:flex gap-4">
         <li><a href="/" class="text-neutral-100 text-sm uppercase hover:opacity-70">Home</a></li>
         <li><a href="/airing" class="text-neutral-100 text-sm uppercase hover:opacity-70">Airing</a></li>
         <li><a href="/popular" class="text-neutral-100 text-sm uppercase hover:opacity-70">Popular</a></li>
     </ul>
+    <i class="fa-solid fa-bars md:hidden text-neutral-100 text-2xl uppercase hover:opacity-70"></i>
 </div>
+<div class="flex flex-col items-center text-center relative">
+    <ul id="menu" class="hidden md:hidden text-center my-2">
+        <li><a href="/" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Home</a></li>
+        <li><a href="/airing" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Airing</a>
+        </li>
+        <li><a href="/popular" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Popular</a>
+        </li>
+    </ul>
+</div>
+
+<script>
+    const icon = document.querySelector(".fa-bars");
+    const menu = document.getElementById("menu");
+    icon.addEventListener("click", function () {
+        menu.classList.toggle("hidden");
+    });
+</script>
