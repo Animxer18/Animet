@@ -14,7 +14,7 @@ router.get("/", async (req, res) => {
     try {
         const response = await axios.get(`${url}recent-release`);
         const data = response.data;
-        res.render("index", { data, title: "Watch anime online for free" });
+        res.render("index", { data, title: "Stream and watch anime online for free on Animet" });
     } catch (error) {
         next(error);
     }
