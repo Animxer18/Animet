@@ -5,14 +5,30 @@
         <li><a href="/airing" class="text-neutral-100 text-sm uppercase hover:opacity-70">Airing</a></li>
         <li><a href="/popular" class="text-neutral-100 text-sm uppercase hover:opacity-70">Popular</a></li>
     </ul>
+    <form action="/search" method="post" class="hidden md:flex">
+        <input type="text" name="search" placeholder="Search here.."
+            class="text-neutral-100 bg-transparent border-neutral-400 border-2 outline-none rounded-l-lg px-2 focus:border-neutral-100">
+        <button type="submit"
+            class="text-neutral-100 bg-transparent border-neutral-400 border-2 outline-none rounded-r-lg transition-colors px-2 hover:text-neutral-950 hover:bg-neutral-100 hover:border-neutral-100"><i
+                class="fa-solid fa-magnifying-glass text-sm"></i></button>
+    </form>
     <i class="fa-solid fa-bars md:hidden text-neutral-100 text-2xl uppercase hover:opacity-70"></i>
 </div>
 <div class="flex flex-col items-center text-center relative">
     <ul id="menu" class="hidden md:hidden text-center my-2">
         <li><a href="/" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Home</a></li>
-        <li><a href="/airing" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Airing</a>
-        </li>
-        <li><a href="/popular" class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Popular</a>
+        <li style="margin-top: 10px;"><a href="/airing"
+                class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Airing</a></li>
+        <li style="margin-top: 10px;"><a href="/popular"
+                class="text-neutral-100 text-base uppercase hover:opacity-70 hover:underline">Popular</a></li>
+        <li style="margin-top: 10px;">
+            <form action="/search" method="post" class="flex">
+                <input type="text" name="search" placeholder="Search here.."
+                    class="text-neutral-100 bg-transparent border-neutral-400 border-2 outline-none rounded-l-lg py-1 px-3 focus:border-neutral-100">
+                <button type="submit"
+                    class="text-neutral-100 bg-transparent border-neutral-400 border-2 outline-none rounded-r-lg transition-colors py-1 px-3 hover:text-neutral-950 hover:bg-neutral-100 hover:border-neutral-100"><i
+                        class="fa-solid fa-magnifying-glass text-sm"></i></button>
+            </form>
         </li>
     </ul>
 </div>

@@ -7,9 +7,10 @@ const path = require("path");
 const app = express();
 // Middlewares & Template
 app.use(express.static(path.join(__dirname, "public")));
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json());
 app.use(layouts);
 app.use(router);
-app.use(express.json());
 app.set("views", path.join(__dirname, "views"));
 app.set("layout", path.join(__dirname, "layouts", "layout"));
 app.set("view engine", "ejs");
