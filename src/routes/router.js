@@ -10,7 +10,7 @@ const errorHandler = (error, req, res, next) => {
 
 router.use(errorHandler);
 
-router.get("/", async (req, res) => {
+router.get("/", async (req, res, next) => {
     try {
         const response = await axios.get(`${url}recent-release`);
         const data = response.data;
@@ -20,7 +20,7 @@ router.get("/", async (req, res) => {
     }
 });
 
-router.get("/airing", async (req, res) => {
+router.get("/airing", async (req, res, next) => {
     try {
         const data = [];
         for (let page = 1; page <= 3; page++) {
@@ -33,7 +33,7 @@ router.get("/airing", async (req, res) => {
     }
 });
 
-router.get("/popular", async (req, res) => {
+router.get("/popular", async (req, res, next) => {
     try {
         const response = await axios.get(`${url}popular`);
         const data = response.data;
@@ -43,7 +43,7 @@ router.get("/popular", async (req, res) => {
     }
 });
 
-router.post("/search", async (req, res) => {
+router.post("/search", async (req, res, next) => {
     try {
         const search = req.body.search;
         res.redirect(`/search?query=${search}`);
@@ -52,7 +52,7 @@ router.post("/search", async (req, res) => {
     }
 });
 
-router.get("/search", async (req, res) => {
+router.get("/search", async (req, res, next) => {
     try {
         const query = req.query.query;
         const response = await axios.get(`${url}search?keyw=${query}`);
@@ -63,7 +63,7 @@ router.get("/search", async (req, res) => {
     }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", async (req, res, next) => {
     try {
         const id = req.params.id;
         const response = await axios.get(`${url}anime-details/${id}`);
@@ -74,7 +74,7 @@ router.get("/:id", async (req, res) => {
     }
 });
 
-router.get("/:id/:episode", async (req, res) => {
+router.get("/:id/:episode", async (req, res, next) => {
     try {
         const id = req.params.id;
         const episode = req.params.episode;

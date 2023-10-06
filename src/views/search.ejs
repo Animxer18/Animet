@@ -1,17 +1,37 @@
 <div class="my-8" data-aos="fade-in">
-    <div class="flex justify-start items-center m-4">
-        <h2 class="text-neutral-100 text-xl uppercase">Search result for <%= query %>
-        </h2>
-    </div>
-    <div class="flex flex-wrap justify-center items-center gap-2">
-        <% data.forEach(i=> { %>
-            <a href="/<%= i.animeId %>" class="flex flex-col gap-1">
-                <img src="<%= i.animeImg %>" alt="<%= i.animeTitle %>" title="<%= i.animeTitle %>"
-                    class="w-40 h-56 rounded-lg object-cover">
-                <p class="text-neutral-100 w-40 text-center truncate">
-                    <%= i.animeTitle %>
-                </p>
-            </a>
-            <% }); %>
-    </div>
+    <% if (query !=="" ) { %>
+        <% if (data.length> 0) { %>
+            <div class="flex justify-start items-center m-4">
+                <h2 class="text-neutral-100 text-xl uppercase">Search result for <%= query %>
+                </h2>
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-2">
+                <% data.forEach(i=> { %>
+                    <a href="/<%= i.animeId %>" class="flex flex-col gap-1">
+                        <img src="<%= i.animeImg %>" alt="<%= i.animeTitle %>" title="<%= i.animeTitle %>"
+                            class="w-40 h-56 rounded-lg object-cover">
+                        <p class="text-neutral-100 w-40 text-center truncate">
+                            <%= i.animeTitle %>
+                        </p>
+                    </a>
+                    <% }); %>
+            </div>
+            <% } else { %>
+                <div class="flex flex-col justify-center items-center gap-4 h-[450px] mx-4">
+                    <i class="fa-solid fa-face-sad-tear text-neutral-100 text-6xl uppercase"></i>
+                    <h3 class="text-neutral-100 text-lg uppercase">Sorry, Nothing is Here..</h3>
+                    <a href="/"
+                        class="text-neutral-100 bg-transparent border rounded-full border-purple-600 py-1 px-4 transition-colors uppercase hover:bg-purple-600">Go
+                        to Home</a>
+                </div>
+                <% } %>
+                    <% } else { %>
+                        <div class="flex flex-col justify-center items-center gap-4 h-[450px] mx-4">
+                            <i class="fa-solid fa-face-sad-tear text-neutral-100 text-6xl uppercase"></i>
+                            <h3 class="text-neutral-100 text-lg uppercase">Sorry, Nothing is Here..</h3>
+                            <a href="/"
+                                class="text-neutral-100 bg-transparent border rounded-full border-purple-600 py-1 px-4 transition-colors uppercase hover:bg-purple-600">Go
+                                to Home</a>
+                        </div>
+                        <% } %>
 </div>
